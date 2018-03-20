@@ -2,24 +2,31 @@ package br.com.devmedia.notas;
 
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
+
+import java.util.List;
 
 public class NotaRest {
 
-   public void lista(){
+    public List<Nota> lista() {
 
-       // comando para fazer chamada de um webservice
-       Client client = Client.create();
-       // comando para fazer a chamada de um endereco e chamar o item.
-       WebResource webResource = client.resource("http://devmedianotesapi.azurewebsites.net/api/");
-       //pegara o path do do link
-       String notes = webResource.path("Notes").get(String.class);
+        // comando para fazer chamada de um webservice
+        Client client = Client.create();
+        // comando para fazer a chamada de um endereco e chamar o item.
+        WebResource webResource = client.resource("http://devmedianotesapi.azurewebsites.net/api/");
+        //pegara o path do do link
+        // para converter a chamada em string,devemos usar um new generitypes em list, notas.
+        return webResource.path("Notes").get(new GenericType<List<Nota>>() {
 
-       System.out.println(notes);
-   }
+
+        });
+    }
 
     public static void main(String[] args) {
         NotaRest notaRest = new NotaRest();
-        notaRest.lista();
+        List<Nota> lista = notaRest.lista();
+// foreach para coletar os itens que serao carregados pela lista e tranformara em java 
+        lista.forEach(items -> System.out.println(items.toString()));
     }
 }

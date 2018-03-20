@@ -44,7 +44,12 @@
             <artifactId>jersey-json</artifactId>
             <version>LATEST</version>
         </dependency>
-
+        <!-- biblioteca que vai registrar json em string -->
+        <dependency>
+            <groupId>com.owlike</groupId>
+            <artifactId>genson</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 
 
@@ -58,6 +63,14 @@
                 <configuration>
                     <port>9090</port>
                     <path>/notas</path>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
