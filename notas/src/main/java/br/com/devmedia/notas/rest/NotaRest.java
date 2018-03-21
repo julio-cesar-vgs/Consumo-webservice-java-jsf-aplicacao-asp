@@ -10,17 +10,18 @@ import java.util.List;
 
 public class NotaRest {
 
-    public List<Nota> lista() {
+    private Client client;
+    private WebResource webResource;
 
-        // comando para fazer chamada de um webservice
-        Client client = Client.create();
-        // comando para fazer a chamada de um endereco e chamar o item.
-        WebResource webResource = client.resource("http://devmedianotesapi.azurewebsites.net/api/");
+    public NotaRest() {
+        client = Client.create();
+        client.resource("http://devmedianotesapi.azurewebsites.net/api/");
+    }
+
+    public List<Nota> lista() {
         //pegara o path do do link
         // para converter a chamada em string,devemos usar um new generitypes em list, notas.
         return webResource.path("Notes").get(new GenericType<List<Nota>>() {
-
-
         });
     }
 
@@ -28,10 +29,13 @@ public class NotaRest {
         NotaRest notaRest = new NotaRest();
         List<Nota> lista = notaRest.lista();
 // foreach para coletar os itens que serao carregados pela lista e tranformara em java
-        lista.forEach(items -> System.out.println(items.toString()));
+        // lista.forEach(items -> System.out.println(items.toString()));
+
+        notaRest.obter(2510);
     }
 
-    public void obter(){
-
+    public Nota obter(Integer id) {
+        return webResource.path("Notes").path(id.toString()).get(new GenericType<Nota>() {
+        });
     }
 }
