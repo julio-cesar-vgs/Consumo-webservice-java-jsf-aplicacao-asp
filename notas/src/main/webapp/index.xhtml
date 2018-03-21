@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -10,6 +11,27 @@
 </h:head>
 
 <h:body>
-    Teste
+    <p:dataTable var="nota" value="#{notaBean.notas}">
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Identificação"/>
+            </f:facet>
+            <h:outputText value="#{nota.id}"/>
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Titulo"/>
+            </f:facet>
+            <h:outputText value="#{nota.title}"/>
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Corpo"/>
+            </f:facet>
+            <h:outputText value="#{nota.body}"/>
+        </p:column>
+    </p:dataTable>
 </h:body>
 </html>

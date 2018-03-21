@@ -1,4 +1,4 @@
-package br.com.devmedia.notas;
+package br.com.devmedia.notas.model;
 
 import com.owlike.genson.annotation.JsonProperty;
 

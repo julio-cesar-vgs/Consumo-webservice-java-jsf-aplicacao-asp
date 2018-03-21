@@ -1,6 +1,7 @@
-package br.com.devmedia.notas;
+package br.com.devmedia.notas.rest;
 
 
+import br.com.devmedia.notas.model.Nota;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
@@ -26,7 +27,7 @@ public class NotaRest {
     public static void main(String[] args) {
         NotaRest notaRest = new NotaRest();
         List<Nota> lista = notaRest.lista();
-// foreach para coletar os itens que serao carregados pela lista e tranformara em java 
+// foreach para coletar os itens que serao carregados pela lista e tranformara em java
         lista.forEach(items -> System.out.println(items.toString()));
     }
 }
