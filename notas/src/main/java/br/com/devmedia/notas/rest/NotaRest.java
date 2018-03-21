@@ -30,4 +30,8 @@ public class NotaRest {
 // foreach para coletar os itens que serao carregados pela lista e tranformara em java
         lista.forEach(items -> System.out.println(items.toString()));
     }
+
+    public void obter(){
+
+    }
 }
