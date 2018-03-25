@@ -6,6 +6,7 @@ import br.com.devmedia.notas.rest.NotaRest;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.Collections;
 import java.util.List;
 
 //session scoped, vai existir ate aquela requisao exista
@@ -13,16 +14,49 @@ import java.util.List;
 @ManagedBean
 public class NotaBean {
 
+    private Integer id;
+    private Nota nota;
     private List<Nota> notas;
+    NotaRest notaRest;
+
+    //Linha 10: Anotação que define que o método será chamado assim que o bean for inicializado;
+    @PostConstruct
+    public void init() {
+        notaRest = new NotaRest();
+        notas = notaRest.lista();
+    }
+
+    public String exibir(Nota nota) {
+        this.nota = nota;
+        return "detalhes";
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Nota getNota() {
+        return nota;
+    }
+
+    public void setNota(Nota nota) {
+        this.nota = nota;
+    }
 
     public List<Nota> getNotas() {
         return notas;
     }
 
-    //Linha 10: Anotação que define que o método será chamado assim que o bean for inicializado;
-    @PostConstruct
-    public void init() {
-        NotaRest notaRest = new NotaRest();
-        notas = notaRest.lista();
+    public void setNotas(List<Nota> notas) {
+        this.notas = notas;
+    }
+
+    public void initDetalhes(){
+      notaRest = new NotaRest();
+      this.nota = notaRest.obter(id);
     }
 }
