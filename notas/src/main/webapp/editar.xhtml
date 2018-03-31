@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
+<!-- Arquivo relacionado a atulização dos itens -->
 <f:metadata>
     <!-- Parametro que ira mostrar na barra de endereco -->
     <f:viewParam name="id" value="#{notaBean.id}"/>
@@ -17,23 +17,22 @@
     <title>DevMedia - Notas</title>
 </h:head>
 <h:body>
-    <h:panelGroup>
-        <p:outputLabel for="id" value="Id: "/>
-        <h:outputText   id="id" value="#{notaBean.nota.id}"/>
-    </h:panelGroup>
-    <br></br>
-    <h:panelGroup>
-        <p:outputLabel for="title" value="Título: "/>
-        <h:outputText id="title" value="#{notaBean.nota.title}"/>
-    </h:panelGroup>
-    <br></br>
-    <h:panelGroup>
-        <p:outputLabel for="body" value="Corpo: "/>
-        <h:outputText id="body" value="#{notaBean.nota.body}"/>
-    </h:panelGroup>
-    <br/>
-    <h:link value="Editar" outcome="editar">
-        <f:param name="id" value="#{notaBean.nota.id}"/>
-    </h:link>
+    <h:form>
+        <h:panelGroup>
+            <p:outputLabel for="id" value="Id: "/>
+            <h:inputText id="id" value="#{notaBean.nota.id}"/>
+        </h:panelGroup>
+        <br></br>
+        <h:panelGroup>
+            <p:outputLabel for="title" value="Título: "/>
+            <h:inputText id="title" value="#{notaBean.nota.title}"/>
+        </h:panelGroup>
+        <br></br>
+        <h:panelGroup>
+            <p:outputLabel for="body" value="Corpo: "/>
+            <h:inputText id="body" value="#{notaBean.nota.body}"/>
+        </h:panelGroup>
+        <h:commandButton value="Salvar" action="#{notaBean.editar()}"/>
+    </h:form>
 </h:body>
 </html>

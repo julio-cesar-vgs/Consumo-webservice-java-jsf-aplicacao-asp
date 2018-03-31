@@ -17,7 +17,7 @@ public class NotaBean {
     private Integer id;
     private Nota nota;
     private List<Nota> notas;
-    NotaRest notaRest;
+    NotaRest notaRest = new NotaRest();
 
     //Linha 10: Anotação que define que o método será chamado assim que o bean for inicializado;
     @PostConstruct
@@ -29,6 +29,18 @@ public class NotaBean {
     public String exibir(Nota nota) {
         this.nota = nota;
         return "detalhes";
+    }
+
+    public void initDetalhes(){
+        this.nota = notaRest.obter(id);
+    }
+
+    // metodo para editar e atualizar os dados
+    public String editar(){
+        notaRest.atualizar(this.nota);
+        this.notas = notaRest.lista();
+        return "index";
+
     }
 
     public Integer getId() {
@@ -55,8 +67,5 @@ public class NotaBean {
         this.notas = notas;
     }
 
-    public void initDetalhes(){
-      notaRest = new NotaRest();
-      this.nota = notaRest.obter(id);
-    }
+
 }

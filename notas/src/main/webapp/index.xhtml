@@ -35,6 +35,14 @@
                 </f:facet>
                 <h:outputText value="#{nota.body}"/>
             </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Ações"/>
+                </f:facet>
+                <h:link value="Editar" outcome="editar">
+                    <f:param name="id" value="#{nota.id}"/>
+                </h:link>
+            </p:column>
         </p:dataTable>
     </h:form>
 </h:body>
