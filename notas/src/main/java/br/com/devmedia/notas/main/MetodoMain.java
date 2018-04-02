@@ -1,8 +1,7 @@
-package br.com.devmedia.notas.rest;
+package br.com.devmedia.notas.main;
 
 import br.com.devmedia.notas.model.Nota;
-
-import java.util.List;
+import br.com.devmedia.notas.rest.NotaRest;
 
 public class MetodoMain {
     public static void main(String[] args) {
@@ -16,9 +15,18 @@ public class MetodoMain {
         // System.out.println(notaRest.obter(2527));
 
 
-        nota.setId(2528 );
+        //funcao atualizar
+        /**
+         *
+         nota.setId(2528 );
+         nota.setBody("Teste Devmedia JSF");
+         nota.setTitle("Vamos que vamos");
+         notaRest.atualizar(nota);
+         */
+
+
         nota.setBody("Teste Devmedia JSF");
         nota.setTitle("Vamos que vamos");
-        notaRest.atualizar(nota);
+        notaRest.inserir(nota);
     }
 }

@@ -6,6 +6,9 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.config.ClientConfig;
+import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.api.client.filter.LoggingFilter;
 
 import java.util.List;
 
@@ -17,7 +20,10 @@ public class NotaRest {
 
     // construtor para recuperar a uri do site para requisicao
     public NotaRest() {
-        client = Client.create();
+        ClientConfig clientConfig = new DefaultClientConfig(GensonProvider.class);
+        client = Client.create(clientConfig);
+        // log do filtro
+        client.addFilter(new LoggingFilter(System.out));
         webResource = client.resource("http://devmedianotesapi.azurewebsites.net/api/");
     }
 
@@ -51,6 +57,11 @@ public class NotaRest {
     // configuracao para atualizar uma nota
     public void atualizar(Nota nota) {
         webResource.path("Notes").path(nota.getId().toString()).put(ClientResponse.class,nota );
+    }
+
+
+    public void inserir(Nota nota){
+        webResource.path("Notes").post(new GenericType<Nota>(){},nota);
     }
 }
 

@@ -13,26 +13,30 @@
     <f:event type="preRenderView" listener="#{notaBean.initDetalhes}"/>
 
 </f:metadata>
+
+
 <h:head>
     <title>DevMedia - Notas</title>
+    <style type="text/css">
+        .semBorda tr, .semBorda td {
+            border: none !important;
+        }
+    </style>
+
 </h:head>
 <h:body>
     <h:form>
-        <h:panelGroup>
-            <p:outputLabel for="id" value="Id: "/>
-            <h:inputText id="id" value="#{notaBean.nota.id}"/>
-        </h:panelGroup>
-        <br></br>
-        <h:panelGroup>
-            <p:outputLabel for="title" value="Título: "/>
-            <h:inputText id="title" value="#{notaBean.nota.title}"/>
-        </h:panelGroup>
-        <br></br>
-        <h:panelGroup>
-            <p:outputLabel for="body" value="Corpo: "/>
-            <h:inputText id="body" value="#{notaBean.nota.body}"/>
-        </h:panelGroup>
-        <h:commandButton value="Salvar" action="#{notaBean.editar()}"/>
+        <p:fieldset>
+            <p:panelGrid columns="2" styleClass="semBorda">
+                <p:outputLabel for="id" value="Id: "/>
+                <p:inputText id="id" value="#{notaBean.nota.id}"/>
+                <p:outputLabel for="title" value="Título: "/>
+                <p:inputText id="title" value="#{notaBean.nota.title}"/>
+                <p:outputLabel for="body" value="Corpo: "/>
+                <p:inputText id="body" value="#{notaBean.nota.body}"/>
+            </p:panelGrid>
+            <p:commandButton value="Salvar" action="#{notaBean.editar()}" icon="ui-icon-check"/>
+        </p:fieldset>
     </h:form>
 </h:body>
 </html>

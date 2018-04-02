@@ -1,5 +1,6 @@
 package br.com.devmedia.notas.model;
 
+import com.owlike.genson.annotation.JsonIgnore;
 import com.owlike.genson.annotation.JsonProperty;
 
 public class Nota {
@@ -11,14 +12,17 @@ public class Nota {
     @JsonProperty("Body")
     private String body;
 
+    @JsonIgnore
     public Integer getId() {
         return id;
     }
 
+    @JsonIgnore
     public String getTitle() {
         return title;
     }
 
+    @JsonIgnore
     public String getBody() {
         return body;
     }
